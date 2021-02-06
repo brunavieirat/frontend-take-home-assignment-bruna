@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import styled from 'styled-components';
+import Header from './components/header/Header';
+import PageTitle from './components/pageTitle/PageTile';
+import SectionBuyHouse from './components/SectionBuyHouse/SectionBuyHouse';
 
-function App() {
+const Container = styled.body`
+  background-color: #e5e5e5;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  overflow-y: hidden;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+`;
+
+const App: React.FunctionComponent = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header />
+      <PageTitle />
+      <SectionBuyHouse />
+    </Container>
   );
-}
+};
 
 export default App;
