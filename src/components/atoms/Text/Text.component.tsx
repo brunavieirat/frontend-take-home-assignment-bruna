@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TextStyled = styled.p<{ type: string }>`
-  font-family: Work Sans;
   color: ${(props) =>
     props.type === 'label' ? '#1E2A32' : 'subtitle' ? '#708797' : '#1C1E1F'};
   font-size: ${(props) => (props.type === 'subtitle' ? '14px' : '12px')};

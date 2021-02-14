@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import HomePage from './components/pages/Home/Home.page';
 
-const App: React.FunctionComponent = () => {
+const App: React.FC = () => {
   return <HomePage />;
 };
 

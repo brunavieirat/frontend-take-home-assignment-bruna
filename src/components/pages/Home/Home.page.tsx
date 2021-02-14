@@ -2,37 +2,50 @@ import React, { useState, useEffect, useCallback } from 'react';
 import moment from 'moment';
 import HomeTemplate from './Home.template';
 
-const HomePage: React.FunctionComponent = () => {
+const HomePage: React.FC = () => {
   const [totalMonths, setTotalMonths] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [finalDate, setFinalDate] = useState(moment());
   const [countMonth, setCountMonth] = useState(1);
 
-  useEffect(() => {
-    function handler({ key }: { key: any }) {
-      if (key === 'ArrowLeft' && finalDate > moment()) {
-        setFinalDate(moment(finalDate).subtract(1, 'months'));
-        setCountMonth(countMonth - 1);
+  const subtractMonth = () => {
+    setFinalDate(moment(finalDate).subtract(1, 'months'));
+    setCountMonth(countMonth - 1);
+  };
 
-        // console.log('left', countMonth);
+  const addMonth = () => {
+    setCountMonth(countMonth + 1);
+    setFinalDate(moment(finalDate).add(1, 'months'));
+  };
+
+  const changeMonth = (type: string) => {
+    if (type === 'add') {
+      addMonth();
+    }
+    if (type === 'subtract') {
+      subtractMonth();
+    }
+  };
+
+  useEffect(() => {
+    const handler = ({ key }: { key: any }) => {
+      if (key === 'ArrowLeft' && finalDate > moment()) {
+        subtractMonth();
       }
       if (key === 'ArrowRight') {
-        setCountMonth(countMonth + 1);
-        setFinalDate(moment(finalDate).add(1, 'months'));
-        // setTotalMonths(totalAmount / countMonth);
-        // console.log('right', countMonth);
+        addMonth();
       }
-    }
+    };
     window.addEventListener('keydown', handler);
 
     return () => {
       window.removeEventListener('keydown', handler);
     };
-  }, [finalDate, countMonth, totalAmount, totalMonths]);
+  }, [finalDate, countMonth, totalMonths]);
 
   useEffect(() => {
     setTotalMonths(totalAmount / countMonth);
-  }, [totalAmount, totalAmount, countMonth]);
+  }, [totalAmount, countMonth]);
 
   return (
     <HomeTemplate
@@ -41,6 +54,7 @@ const HomePage: React.FunctionComponent = () => {
       totalAmount={totalAmount}
       countMonth={countMonth}
       totalMonths={totalMonths}
+      changeMonth={changeMonth}
     />
   );
 };

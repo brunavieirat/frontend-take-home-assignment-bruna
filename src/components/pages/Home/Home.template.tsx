@@ -11,12 +11,13 @@ import PageTitle from '../../atoms/PageTitle/PageTile.component';
 import SectionBuyHouse from '../../organisms/SectionBuyHouse/SectionBuyHouse.component';
 import { Moment } from 'moment';
 
-interface HomeTemplateParams {
+export interface HomeTemplateParams {
   finalDate: Moment;
   setTotalAmount: Dispatch<SetStateAction<number>>;
   totalAmount: number;
   countMonth: number;
   totalMonths: number;
+  changeMonth: (type: string) => void;
 }
 const HomeTemplate: React.FC<HomeTemplateParams> = (
   props: HomeTemplateParams
@@ -27,8 +28,9 @@ const HomeTemplate: React.FC<HomeTemplateParams> = (
     totalAmount,
     countMonth,
     totalMonths,
+    changeMonth,
   } = props;
-  const Container = styled.body`
+  const Container = styled.div`
     background-color: #e5e5e5;
     height: 100vh;
     width: 100%;
@@ -39,7 +41,8 @@ const HomeTemplate: React.FC<HomeTemplateParams> = (
   `;
 
   return (
-    <Container>
+    // <Container>
+    <div>
       <Header />
       <PageTitle />
       <SectionBuyHouse
@@ -48,8 +51,10 @@ const HomeTemplate: React.FC<HomeTemplateParams> = (
         totalAmount={totalAmount}
         countMonth={countMonth}
         totalMonths={totalMonths}
+        changeMonth={changeMonth}
       />
-    </Container>
+    </div>
+    // </Container>
   );
 };
 

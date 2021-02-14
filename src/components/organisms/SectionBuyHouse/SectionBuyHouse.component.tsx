@@ -7,6 +7,7 @@ import InputGroup from '../../molecules/InputGroup/InputGroup.component';
 import Result from '../Result/Result.component';
 import Button from '../../atoms/Button/Button.component';
 import DatePickerComponent from '../../molecules/DatePicker/DatePicker.component';
+import { HomeTemplateParams } from '../../pages/Home/Home.template';
 
 const Container = styled.section`
   background-color: #ffffff;
@@ -61,17 +62,20 @@ const DivValues = styled.div`
   width: 100%;
   @media (min-width: 800px) {
     display: flex;
+    justify-content: space-between;
   }
 `;
 
-const DivValuesItems = styled.div`
+const DivDataValue = styled.div`
   /* width: 100%; */
   @media (min-width: 800px) {
-    /* width: 40%; */
+    width: 30%;
   }
 `;
 
-const SectionBuyHouse = (props: any) => {
+const SectionBuyHouse: React.FC<HomeTemplateParams> = (
+  props: HomeTemplateParams
+) => {
   return (
     <Container>
       <ContainerHeader>
@@ -82,16 +86,19 @@ const SectionBuyHouse = (props: any) => {
         </TitleSection>
       </ContainerHeader>
       <DivValues>
-        <DivValuesItems>
+        <div>
           <InputGroup label="Total amount">
             <InputComponent setTotalAmount={props.setTotalAmount} />
           </InputGroup>
-        </DivValuesItems>
-        <DivValuesItems>
+        </div>
+        <DivDataValue>
           <InputGroup label="Reach goal by">
-            <DatePickerComponent date={props.finalDate} />
+            <DatePickerComponent
+              date={props.finalDate}
+              changeMonth={props.changeMonth}
+            />
           </InputGroup>
-        </DivValuesItems>
+        </DivDataValue>
       </DivValues>
       <ResultContainer>
         <Result

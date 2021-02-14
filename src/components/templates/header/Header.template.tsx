@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import logo from '../../../assets/logo.png';
 
 const DivStyle = styled.div`
-  width: 98%;
   background-color: #ffffff;
+  /* width: 100%; */
   height: 56px;
   display: flex;
   align-items: center;

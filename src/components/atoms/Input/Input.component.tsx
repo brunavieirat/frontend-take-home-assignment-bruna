@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 import { BorderStyle } from '../../templates/Border/Border.template';
+import CurrencyInput from '../CurrencyInput/CurrencyInput.component';
 
 const DivStyled = styled(BorderStyle)`
-  padding: 0 10px;
   display: flex;
 `;
 
 const CipherStyled = styled.p`
   font-size: 20px;
   color: #708797;
+  margin-left: 10px;
   @media (min-width: 800px) {
     font-size: 24px;
   }
 `;
 
-const InputStyled = styled.input`
+const InputStyled = styled(CurrencyInput)`
   padding: 10px;
   border: none;
   border-width: 0;
@@ -37,9 +38,12 @@ const InputComponent = (props: any) => {
     <DivStyled>
       <CipherStyled> $ </CipherStyled>
       <InputStyled
-        onChange={(e) => props.setTotalAmount(e.target.value)}
-        type="number"
-      ></InputStyled>
+        placeholder="0.00"
+        type="text"
+        onChange={(e: any) =>
+          props.setTotalAmount(parseFloat(e.target.value.replace(',', '')))
+        }
+      />
     </DivStyled>
   );
 };
