@@ -1,16 +1,17 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
 
 const DivStyle = styled.div`
-  width: 100%;
+  width: 98%;
   background-color: #ffffff;
   height: 56px;
   display: flex;
   align-items: center;
-  padding-left: 2%;
+  padding-left: 20px;
   @media (min-width: 800px) {
     height: 80px;
+    padding-left: 2%;
   }
 `;
 

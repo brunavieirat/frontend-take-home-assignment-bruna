@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Title = styled.p`
-  font-family: Work Sans;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
@@ -14,7 +13,7 @@ const Title = styled.p`
   }
 `;
 
-const PageTitle = () => {
+const PageTitleComponent = () => {
   return (
     <Title>
       Let's plan your <b>saving goal.</b>
@@ -22,4 +21,4 @@ const PageTitle = () => {
   );
 };
 
-export default PageTitle;
+export default PageTitleComponent;
