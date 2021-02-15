@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const TextStyled = styled.p<{ type: string }>`
@@ -13,7 +13,12 @@ const TextStyled = styled.p<{ type: string }>`
   }
 `;
 
-const TextComponent = (props: any) => {
+export interface TextParams {
+  type: string;
+  children: ReactNode;
+}
+
+const TextComponent: React.FC<TextParams> = (props: TextParams) => {
   return <TextStyled type={props.type}>{props.children}</TextStyled>;
 };
 

@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import React from 'react';
 import styled from 'styled-components';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
@@ -36,13 +36,21 @@ const TextStyled = styled.p<{ type: string }>`
   }
 `;
 
-const DatePickerComponent = (props: any) => {
-  const date = props.date;
+export interface DatePickerParams {
+  date: Moment;
+  changeMonth: (type: string) => void;
+}
+
+const DatePickerComponent: React.FC<DatePickerParams> = (
+  props: DatePickerParams
+) => {
+  const { date, changeMonth } = props;
+
   return (
     <Container>
       <ButtonStyled
         disabled={date <= moment()}
-        onClick={() => props.changeMonth('subtract')}
+        onClick={() => changeMonth('subtract')}
       >
         <BsChevronLeft color="#8A9CA9" fontSize={18} />
       </ButtonStyled>

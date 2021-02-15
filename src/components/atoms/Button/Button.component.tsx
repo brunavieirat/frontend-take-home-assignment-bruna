@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const ButtonStyled = styled.button`
@@ -15,7 +15,7 @@ const ButtonStyled = styled.button`
   color: #ffffff;
 `;
 
-const ButtonComponent = (props: any) => (
-  <ButtonStyled>{props.children}</ButtonStyled>
+const ButtonComponent = ({ children }: { children: ReactNode }) => (
+  <ButtonStyled>{children}</ButtonStyled>
 );
 export default ButtonComponent;

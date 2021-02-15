@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
 import { BorderStyle } from '../../templates/Border/Border.template';
 import CurrencyInput from '../../atoms/CurrencyInput/CurrencyInput.component';
@@ -39,7 +38,11 @@ const InputStyled = styled(CurrencyInput)`
   }
 `;
 
-const InputStyledComponent = (props: any) => {
+const InputStyledComponent = ({
+  setTotalAmount,
+}: {
+  setTotalAmount: Dispatch<SetStateAction<number>>;
+}) => {
   return (
     <DivStyled>
       <CipherStyled> $ </CipherStyled>
@@ -47,7 +50,7 @@ const InputStyledComponent = (props: any) => {
         placeholder="0.00"
         type="text"
         onChange={(e: any) =>
-          props.setTotalAmount(parseFloat(e.target.value.replace(',', '')))
+          setTotalAmount(parseFloat(e.target.value.replace(',', '')))
         }
       />
     </DivStyled>
