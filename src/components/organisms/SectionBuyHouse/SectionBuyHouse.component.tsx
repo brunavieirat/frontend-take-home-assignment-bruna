@@ -31,7 +31,6 @@ const ContainerHeader = styled.div`
 
 const H1Styled = styled.h1`
   font-family: 'Rubik', sans-serif;
-  font-weight: bold;
   color: #1e2a32;
   font-size: 20px;
   margin: 0;
@@ -74,6 +73,14 @@ const DivDataValue = styled.div`
 const SectionBuyHouse: React.FC<HomeTemplateParams> = (
   props: HomeTemplateParams
 ) => {
+  const {
+    finalDate,
+    setTotalAmount,
+    totalAmount,
+    countMonth,
+    totalMonths,
+    changeMonth,
+  } = props;
   return (
     <Container>
       <ContainerHeader>
@@ -86,24 +93,21 @@ const SectionBuyHouse: React.FC<HomeTemplateParams> = (
       <DivValues>
         <div>
           <InputGroup label="Total amount">
-            <InputSyledComponent setTotalAmount={props.setTotalAmount} />
+            <InputSyledComponent setTotalAmount={setTotalAmount} />
           </InputGroup>
         </div>
         <DivDataValue>
           <InputGroup label="Reach goal by">
-            <DatePickerComponent
-              date={props.finalDate}
-              changeMonth={props.changeMonth}
-            />
+            <DatePickerComponent date={finalDate} changeMonth={changeMonth} />
           </InputGroup>
         </DivDataValue>
       </DivValues>
       <ResultContainer>
         <Result
-          date={props.finalDate}
-          countMonth={props.countMonth}
-          totalAmount={props.totalAmount}
-          totalMonths={props.totalMonths}
+          date={finalDate}
+          countMonth={countMonth}
+          totalAmount={totalAmount}
+          totalMonths={totalMonths}
         />
       </ResultContainer>
       <Button> Confirm </Button>

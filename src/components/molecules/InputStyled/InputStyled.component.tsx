@@ -6,9 +6,11 @@ import CurrencyInput from '../../atoms/CurrencyInput/CurrencyInput.component';
 
 const DivStyled = styled(BorderStyle)`
   display: flex;
-  padding: 5px;
   align-items: center;
   box-sizing: border-box;
+  @media (min-width: 800px) {
+    padding: 5px;
+  }
 `;
 
 const CipherStyled = styled.p`

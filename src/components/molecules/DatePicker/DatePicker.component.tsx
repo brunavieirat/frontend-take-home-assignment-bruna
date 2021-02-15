@@ -25,11 +25,15 @@ const ButtonStyled = styled.button`
   border: 0;
 `;
 
-const TextStyled = styled.p`
-  font-weight: bold;
-  color: #1e2a32;
-  margin: 5px;
+const TextStyled = styled.p<{ type: string }>`
+  color: ${(props) => (props.type === 'title' ? '#1E2A32' : '#708797')};
+  font-weight: ${(props) => (props.type === 'title' ? 'bold' : 'normal')};
+  margin: 2px;
   box-sizing: border-box;
+  font-size: 14px;
+  @media (min-width: 800px) {
+    font-size: 16px;
+  }
 `;
 
 const DatePickerComponent = (props: any) => {
@@ -43,8 +47,8 @@ const DatePickerComponent = (props: any) => {
         <BsChevronLeft color="#8A9CA9" fontSize={18} />
       </ButtonStyled>
       <DateStyled>
-        <TextStyled>{date.format('MMMM')}</TextStyled>
-        <Text>{date.format('YYYY')}</Text>
+        <TextStyled type="title">{date.format('MMMM')}</TextStyled>
+        <TextStyled type="label">{date.format('YYYY')}</TextStyled>
       </DateStyled>
       <ButtonStyled onClick={() => props.changeMonth('add')}>
         <BsChevronRight color="#8A9CA9" fontSize={18} />

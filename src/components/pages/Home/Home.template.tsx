@@ -18,12 +18,12 @@ const Container = styled.div`
 `;
 
 export interface HomeTemplateParams {
-  finalDate?: Moment;
-  setTotalAmount?: Dispatch<SetStateAction<number>>;
-  totalAmount?: number;
-  countMonth?: number;
-  totalMonths?: number;
-  changeMonth?: (type: string) => void;
+  finalDate: Moment;
+  setTotalAmount: Dispatch<SetStateAction<number>>;
+  totalAmount: number;
+  countMonth: number;
+  totalMonths: number;
+  changeMonth: (type: string) => void;
 }
 
 const HomeTemplate: React.FC<HomeTemplateParams> = (

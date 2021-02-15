@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Moment } from 'moment';
 import { BorderStyle } from '../../templates/Border/Border.template';
 import Text from '../../atoms/Text/Text.component';
 import { HomeTemplateParams } from '../../pages/Home/Home.template';
@@ -52,7 +53,14 @@ const ResultInfo = styled.div`
   }
 `;
 
-const Result = (props: any) => {
+export interface ResultParams {
+  date: Moment;
+  countMonth: number;
+  totalAmount: number;
+  totalMonths: number;
+}
+
+const Result: React.FC<ResultParams> = (props: ResultParams) => {
   const { date, totalAmount, countMonth, totalMonths } = props;
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -63,13 +71,13 @@ const Result = (props: any) => {
     <BorderStyle>
       <ResultCard>
         <ResultCardTitle> Monthly amount</ResultCardTitle>
-        <ResultValue>${Math.round(totalMonths) || '0'}</ResultValue>
+        <ResultValue>${Math.round(totalMonths) || 0}</ResultValue>
       </ResultCard>
 
       <ResultInfo>
         <Text>
           You’re planning <b>{countMonth} monthly deposits </b>to reach your{' '}
-          <b>{formatter.format(totalAmount)}</b> goal by{' '}
+          <b>{totalAmount ? formatter.format(totalAmount) : '$0'}</b> goal by{' '}
           <b>{date.format('MMMM YYYY')}.</b>
         </Text>
       </ResultInfo>
