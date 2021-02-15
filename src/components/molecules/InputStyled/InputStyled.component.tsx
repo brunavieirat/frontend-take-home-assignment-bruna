@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 import { BorderStyle } from '../../templates/Border/Border.template';
-import CurrencyInput from '../CurrencyInput/CurrencyInput.component';
+import CurrencyInput from '../../atoms/CurrencyInput/CurrencyInput.component';
 
 const DivStyled = styled(BorderStyle)`
   display: flex;
+  padding: 5px;
+  align-items: center;
+  box-sizing: border-box;
 `;
 
 const CipherStyled = styled.p`
   font-size: 20px;
   color: #708797;
+  margin: 0;
   margin-left: 10px;
   @media (min-width: 800px) {
     font-size: 24px;
@@ -33,7 +37,7 @@ const InputStyled = styled(CurrencyInput)`
   }
 `;
 
-const InputComponent = (props: any) => {
+const InputStyledComponent = (props: any) => {
   return (
     <DivStyled>
       <CipherStyled> $ </CipherStyled>
@@ -48,4 +52,4 @@ const InputComponent = (props: any) => {
   );
 };
 
-export default InputComponent;
+export default InputStyledComponent;

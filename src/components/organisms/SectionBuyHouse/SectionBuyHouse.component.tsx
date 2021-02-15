@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import InputComponent from '../../atoms/Input/Input.component';
+import InputSyledComponent from '../../molecules/InputStyled/InputStyled.component';
 import Text from '../../atoms/Text/Text.component';
 import houseImg from '../../../assets/house.png';
 import InputGroup from '../../molecules/InputGroup/InputGroup.component';
@@ -18,7 +18,6 @@ const Container = styled.section`
   align-items: center;
 
   @media (min-width: 800px) {
-    height: 511px;
     width: 560px;
     border-radius: 8px;
   }
@@ -67,7 +66,6 @@ const DivValues = styled.div`
 `;
 
 const DivDataValue = styled.div`
-  /* width: 100%; */
   @media (min-width: 800px) {
     width: 30%;
   }
@@ -88,7 +86,7 @@ const SectionBuyHouse: React.FC<HomeTemplateParams> = (
       <DivValues>
         <div>
           <InputGroup label="Total amount">
-            <InputComponent setTotalAmount={props.setTotalAmount} />
+            <InputSyledComponent setTotalAmount={props.setTotalAmount} />
           </InputGroup>
         </div>
         <DivDataValue>

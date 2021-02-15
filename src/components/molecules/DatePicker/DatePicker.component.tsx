@@ -12,6 +12,8 @@ const Container = styled(BorderStyle)`
   min-width: 100%;
   width: 100%;
   min-width: 100px;
+  box-sizing: border-box;
+  padding: 7px;
 `;
 
 const DateStyled = styled.div`
@@ -21,6 +23,13 @@ const DateStyled = styled.div`
 const ButtonStyled = styled.button`
   background-color: transparent;
   border: 0;
+`;
+
+const TextStyled = styled.p`
+  font-weight: bold;
+  color: #1e2a32;
+  margin: 5px;
+  box-sizing: border-box;
 `;
 
 const DatePickerComponent = (props: any) => {
@@ -34,9 +43,7 @@ const DatePickerComponent = (props: any) => {
         <BsChevronLeft color="#8A9CA9" fontSize={18} />
       </ButtonStyled>
       <DateStyled>
-        <p>
-          <b>{date.format('MMMM')}</b>
-        </p>
+        <TextStyled>{date.format('MMMM')}</TextStyled>
         <Text>{date.format('YYYY')}</Text>
       </DateStyled>
       <ButtonStyled onClick={() => props.changeMonth('add')}>
