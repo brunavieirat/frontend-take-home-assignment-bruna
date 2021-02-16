@@ -12,7 +12,6 @@ const TextStyled = styled.p<{ type: string }>`
       props.type === 'subtitle' ? '16px' : 'label' ? '14px' : '12px'};
   }
 `;
-
 export interface TextParams {
   type: string;
   children: ReactNode;
